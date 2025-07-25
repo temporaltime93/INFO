@@ -5,7 +5,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from whatsapp_web_api import iniciar_bot, enviar_mensaje
 
-WEBHOOK_URL = "https://discord.com/api/webhooks/..."  # tu webhook real
+WEBHOOK_URL = "https://discord.com/api/webhooks/1379160851432341695/xya9f3wHLQIfu6n7Fw8Lp70xrFHlbBDXTXNrdqVGzK98mZTZpV1AO18cLuISiWgwoP7L"  # tu webhook real
 NUMERO_DESTINO = "51949760700"  # número destino en formato internacional
 
 app = Flask(__name__)
